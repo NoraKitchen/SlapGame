@@ -41,6 +41,7 @@ function updatePatience() {
         no.play();
         document.getElementById("player-panel").classList.add("panel-danger");
         document.getElementById("pet-buttons").style.display = "none";
+        document.getElementById("item-buttons").style.display = "none";
         document.getElementById("replay-button").style.display = "block";
         document.getElementById("active-items").innerHTML = "<h3>Oh no!</h1> " + name + " is fed up with your measly attempts at affection. <h1><b>NOW, SUFFER THE CONCEQUENCES.</b></h1>"
     }
@@ -84,6 +85,7 @@ function replay() {
     updatePets();
     updatePatience();
     player.playerInventory = [];
+    document.getElementById("item-buttons").style.display = "block";
     document.getElementById("box").style.display = "inline-block";
     document.getElementById("liveMouse").style.display = "inline-block";
     document.getElementById("catnip").style.display = "inline-block";
