@@ -42,7 +42,7 @@ function updatePatience() {
         document.getElementById("player-panel").classList.add("panel-danger");
         document.getElementById("pet-buttons").style.display = "none";
         document.getElementById("replay-button").style.display = "block";
-        alert("Oh no! " + name + " is fed up with your measly attempts at affection.\n\n NOW, SUFFER THE CONCEQUENCES.")
+        document.getElementById("active-items").innerHTML = "<h3>Oh no!</h1> " + name + " is fed up with your measly attempts at affection. <h1><b>NOW, SUFFER THE CONCEQUENCES.</b></h1>"
     }
     else {
         document.getElementById("cat-img-div").innerHTML = '<img class="img-responsive cat-img" src="cat.jpg">';
