@@ -27,3 +27,7 @@ ul {
     display: inline-block;
     float: right;
 }
+
+.info-button {
+  padding-left: 20px;
+}
