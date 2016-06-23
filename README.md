@@ -1,71 +1,41 @@
-##The Slap Object Game - Part 1
+#CatGame
 
-####Objective:
-Students will use javascript in order to interact with the DOM to create a dynamic webpage. Since students
-will work in groups they will practice using a shared repository or may use pull requests.
+This app was created during week two of the BoiseCodeWorks Immersive Full Stack program. At this point in the curriculum, students had experience with HTML, CSS, Bootstrap, and basic Javascript.
 
-###Step 1 - GIT - Project Initialization
+The app was originally assigned as a “slap game” in which the user would slap, kick, and punch a stick figure till its health was reduced to zero. I figured I could take a slightly different route so long as I included the same basic functionality.
 
-1. Everyone should break into groups of 2 or 3.
-1. A member of the group should create a git repository named TheObjectGame
-1. Create the file index.html and a script file called game.js and a css file name game.css.
-1. Commit changes and push them back to GitHub.
-1. Each team member should then clone the repository via GIT.
+###Tasks
 
-###Step 2 - HTML - Create page layout and Slap button
+In this app, my job was to...
 
-1. link bootstrap game.js and game.css to index.html.
-1. Start by adding a bootstrap panel with a header, body and footer. http://getbootstrap.com/components/#panels
-1. Add an image to the body of a stick figure with a width of 200px
-1. Add a button to the footer with the text "Slap"
+1. Display a health value that decreased when “attack” buttons were clicked
+2. Make different attacks decrease health by different amounts
+3. Make the game end when health reached zero
+4. Create “items” with a constructor, and let them be used by the player to decrease damage
+5. BONUS: Draw the array of items to the page in some way, and allow the player to select items to use
 
-###Step 3 - JS - Declare variables and write the Slap function
+##Process highlights, and what I'd do differently
 
-1. create a global variable: var health=100;
-1. create a function: slap()
-  - have the function reduce the health variable by 1.
-  - for now, have the function alert(health).
-  - test the function by calling slap() at the end of the game.js file. 
-    - you should see an alert of 99 show on the screen.
-    - if this is working, remove the test to prevent popups on every page load.
+I'm a little surprised I was able to accomplish so much after only (I believe at the time) a couple days of first making JavaScript and HTML interact. Still, my experience with JavaScript before this was solely in completing short, self-contained exercises, and I definitely think it shows.
 
-###Step 4 - HTML - Link the Slap button to the Slap function
-1. On the slap button element, add the attribute onClick="slap()"
-  - if things are working properly you should be able to hit the slap button and see the
-  alert window with a decrease in health.
-1. To prevent having to show the players health in popup, let's link the player's health directly to the user interface.
-1. Add a span element to the header for the players health: example - <span>Health:<span id="health">--</span></span>
-  - the id is important so we can call the element from JS easily.
+While my CatGame does everything asked for plus a little more on the surface, the structure of the code under the hood is a little quirky and could do with some heavy refactoring.
 
-###Step 5 - JS - Update the user interface
-1. We are now going to add a function to manipulate the user interface by using the DOM API.
-  - To do this, javascript is required.
-  - You should know by now that selectors are required in order to select specific elements inside the DOM.
-  - In this case, we will use the infamous "document.getElementById("WHATEVER-ID")";
-1. Add a function called update(). This will be responsible for updating the user interface whenever a value changes.
-  - have the function set the "innerText" of the element with the id "health"
-  - see if you and the group can figure this out on your own, if not ask a mentor.
-1. Add a call to the update() function at the bottom of your js file. If it is working, you should see the player health on the screen.
-  - There is no need to delete the call you just added, it is recommended so you always start off with populated values.
-1. If it is working, make sure you add a call to update at the end of the punch function. This way the screen is updated after ever punch.
+###Half-done refactors of days since passed
 
-###Step 6 - HTML - Add the other buttons and stuff...
-1. Add 2 more buttons Punch, and Kick to the UI, as well as their respective functions in javascript.
-  - Have the punch function decrease the player health by 5, and kick by 10.
-  - Don't forget to call update inside each function.
-1. Declare 2 more variables 'name', and 'hits' where you initialized the health variable. 
-  -name your player whatever you want, what datatype would a name be?
-  -set the variable hits with a value of 0, every time the player is hit by a Slap, Punch, or Kick
-this variable should be increased by 1.
-1. Add a placeholder for player name, and hits inside the header next to health.
-1. Wire everything up like you did for "Slap".
+I did actually do some refactoring even as I was originally writing the code. Instructions for the activity implied a separate function could be written for ever single “attack” button, and I initially did this, but later noticed I could simply rewrite the function with a “damage” parameter and use the same function for all buttons, with different damage amounts passed in as arguments. It also seems I chose to put the “addMods” function as a method on the player object, which isn't a bad idea...
 
-###Step 7 - Testing Time
-1. You should now have a functioning application. Test the following
-  - In the panel header you should see an indicator for Health, Name, and Hits; their respective values should be 100, "Whatever Name You Chose", and 0.
-  - Click the slap button, you should see the player health drop to 99 and hit count to 1.
-  - Click the punch button, you should see the player health drop to 94 and hit count to 2.
-  - Finally click the Kick button, you should see the player health drop to 84 and hit count to 3.
-  - Keep pressing buttons... What happens when the player has been hit for over 100 hit points? Why does this happen?
-  - Discuss with the group some ideas on improvements, write these ideas down and be prepared to share.
+###And the transcendental kitteh
 
+...But that begs the question, why is the useItem function not also on the player object? Also, isn't it a little weird that this game clearly contains a cat, but there is no cat object to speak of? Instead, what perhaps ought to have been our cat's properties (his name, his patience level, possibly his pets taken) float freely and globally in random places about the code. The cat has no physical form, no bounds to his existence, no need for the limiting restrictions of JavaScript object encapsulation. The cat is no mere object in this game. He IS them game. He is us all.
+
+So I think someone needs to refactor this code and put that cat back in line. Also, while they're at it, they might consider taking a look at the mildly horrific updatePatience function. Likely originally conceived to update the health in the HTML/view, the function has clearly gone over-achiever on us and decided to also take on not only the job of handling the entire endgame process when “patience” hits zero, but ALSO a number activities that as far as I can tell have no reason to be performed at every single patience update and more likely belong to the replay/restart game function.
+
+###That being said...
+
+One thing that did surprise me looking back over this was the function useItem, whose purpose was to add a used item to the player inventory and display the item panel in the view. This being vanilla JS, I expected the function to be jumbled up with a bunch of HTML (to display the item panel) written inside it. But all there was was a handful of short lines of code. How did the panel appear on the page when the function that added it had no actual HTML inside it to write to the page?
+
+On further inspection, it turned out I had saved the entire string of HTML to write the panel inside a “panelHTML” property on each item object. There are a few things about this that do make me cringe a little (possibly unnecessary repetition of very similar code, and item descriptions are hard-coded in the HTML string rather than using the actual description property), so I'm not sure if it was the best choice overall. But I do still like what I think I was trying to do, which was keep my function free of ugly and confusing HTML strings. Maybe there could even have been a way to keep that basic tactic but remove some of the issues, if I had worked at it a little harder.
+
+##Despite all my complaints, I really enjoyed making CatGame all the way through to the end. I think you will also enjoy playing. All the way through to the end. Please. Also, if your computer is currently muted, please unmute. By the powers of kitteh, I compel you.
+
+###To see the original instructions for this activity, visit README2.md and README3.md. (Note the instructions are old, and for my cohort it was no longer a group activity.)
