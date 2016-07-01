@@ -35,9 +35,9 @@
                  </div><!--panel body end-->
                  <div class="panel-footer">
                      <div id="pet-buttons">
-                        <button class="btn" onclick="petAction(1)">Stroke</button>
-                        <button class="btn" onclick="petAction(5)">Caress Tail</button>
-                        <button class="btn" onclick="petAction(10)">Rub Belly</button>
+                        <button class="btn" onclick="kitty.receivePets(1)">Stroke</button>
+                        <button class="btn" onclick="kitty.receivePets(5)">Caress Tail</button>
+                        <button class="btn" onclick="kitty.receivePets(10)">Rub Belly</button>
                      </div>
                      <div id="replay-button">
                          <button class="btn" onclick="replay()">Try Again?</button>
@@ -45,9 +45,9 @@
                      <div id="item-buttons">
                          <p>Use Item:</p>
                          <ul class="list-inline">
-                            <button class='btn' id ="box" onclick='items.box.useItem()'>Empty Cardboard Box</button>
-                            <button class='btn' id ="liveMouse" onclick='items.liveMouse.useItem()'>Live Mouse</button>
-                            <button class='btn' id ="catnip" onclick='items.catnip.useItem()'>Catnip</button>
+                            <button class='btn' id ="box" onclick='kitty.useItem("box")'>Empty Cardboard Box</button>
+                            <button class='btn' id ="liveMouse" onclick='kitty.useItem("liveMouse")'>Live Mouse</button>
+                            <button class='btn' id ="catnip" onclick='kitty.useItem("catnip")'>Catnip</button>
                          </ul>
                      </div>
                  </div>

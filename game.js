@@ -1,43 +1,8 @@
 
-// var Item = function(name, modifier, imagePath, description) {
-//     this.name = name;
-//     this.modifier = modifier;
-//     this.imagePath = imagePath;
-//     this.description = description;
-//     this.panelHTML = '<div class="col-xs-4 panel-default"><div class="panel-heading">'+ name + '</div><div class="panel-body"><img class="item-img img-responsive" src="' + imagePath + '"></div><div class="panel-footer">' + description + '</div></div>'
-//     };
-
-
-// var items = {
-//     box: new Item("Empty Cardboard Box", 0.2, "media/box.jpg", "Empty, yet strangely alluring."),
-//     liveMouse: new Item("Live Mouse", 0.3, "media/mouse.jpg", "Alive and wrigling."),
-//     catnip: new Item("Catnip", 0.4, "media/catnip.jpg", "Sweet, sweet kitty drugs.")
-// }
-
-var player = {
-    playerInventory: [],
-    addMods: function(inventoryArray){
-        var totalModValue = 0;
-        for (var i = 0; i < inventoryArray.length; i++){
-            var currentItem = inventoryArray[i];
-            totalModValue += currentItem.modifier;
-        }
-        return totalModValue;
-    }
-}
-
-// function useItem(itemToUse){
-//     var pressedButton = document.getElementById(itemToUse);
-//     var activeItemElem = document.getElementById("active-items")
-//     player.playerInventory.push(items[itemToUse]);
-//     activeItemElem.innerHTML += items[itemToUse].panelHTML;
-//     pressedButton.style.display = "none"; 
-// }
-
-function updatePatience() {
+function updatePatience(kitty) {
     var patienceElem = document.getElementById("patience");
-    patienceElem.innerText = patience;
-    if (patience <= 0){
+    patienceElem.innerText = kitty.patience;
+    if (kitty.patience <= 0) {
         document.getElementById("cat-img-div").innerHTML = '<img class="img-responsive cat-img" src="media/angrycat.jpg">'
         no.play();
         document.getElementById("player-panel").classList.add("panel-danger");
@@ -54,38 +19,29 @@ function updatePatience() {
     }
 }
 
-function updatePets() {
-    var petsElem = document.getElementById("pets");
-    petsElem.innerText = pets;
+
+///////////////
+function Controller(){
+    this.petsElem = document.getElementById("pets");
+
+
 }
 
-function getName() {
-    name = prompt("What is the name of your kitty?", "Snuggles McSnuggleface");
-    var nameElem = document.getElementById("name");
-    nameElem.innerText = name;
+Controller.prototype.updatePets = function(){
+    this.petsElem.innerText = kitty.pets;
 }
 
-function calcDamage (rawDamage) {
-    var damageModValue = player.addMods(player.playerInventory);
-    return rawDamage*(1-damageModValue);
-}
+var controller = new Controller();
 
-function petAction(rawDamage) {
-    var totalDamage = calcDamage(rawDamage);
-    patience -= totalDamage;
-    updatePatience();
-    pets++;
-    updatePets();
-}
+
+////////////////
 
 function replay() {
-    patience = 100;
-    pets = 0;
-    no = new Audio("no.wav");
-    getName();
-    updatePets();
-    updatePatience();
-    player.playerInventory = [];
+    kitty = new Kitty();
+    no = new Audio("media/no.wav");
+    kitty.getName();
+    controller.updatePets();
+    updatePatience(kitty);
     document.getElementById("item-buttons").style.display = "block";
     document.getElementById("box").style.display = "inline-block";
     document.getElementById("liveMouse").style.display = "inline-block";
@@ -93,14 +49,48 @@ function replay() {
     document.getElementById("active-items").innerHTML = "";
 }
 
-// function Kitty() {
-//     this.patience = 100;
-//     this.pets = 0
-// }
+function Kitty() {
+    this.patience = 100;
+    this.pets = 0;
+    this.damageMods = 0;
+    this.itemsUsing = [];
+}
 
-// Kitty.prototype.getName = function(){};
-// Kitty.prototype.updatePets = function(){};
-// Kitty.prototype.updatePatience = function(){};
+Kitty.prototype.getName = function () {
+    this.name = prompt("What is the name of your kitty?", "Snuggles McSnuggleface");
+    //change this to update display name func
+    var nameElem = document.getElementById("name");
+    nameElem.innerText = name;
+};
 
+Kitty.prototype.calcMods = function () {
+    //calculates the total mod value/defence bonus of the items in use by kitty
+    //item mod values are in decimals less than 1, totaling no more than 1 (no damage)
+    var totalModValue = 0;
+    for (var i = 0; i < this.itemsUsing.length; i++) {
+        var currentItem = this.itemsUsing[i];
+        totalModValue += currentItem.modifier;
+    }
+    this.damageMods = totalModValue;
+}
+
+Kitty.prototype.useItem = function (itemElemId) {
+    //htm needs removed - adding active item, removing button
+    var pressedButton = document.getElementById(itemElemId);
+    var activeItemElem = document.getElementById("active-items")
+    this.itemsUsing.push(availableItems[itemElemId]);
+    //try taking quotes out see if still works
+    activeItemElem.innerHTML += availableItems[itemElemId].panelHTML;
+    pressedButton.style.display = "none";
+    this.calcMods();
+}
+
+Kitty.prototype.receivePets = function (rawDamage) {
+    var totalDamage = rawDamage * (1 - this.damageMods);
+    this.patience -= totalDamage;
+    this.pets++;
+    updatePatience(kitty); //change this to new func
+    controller.updatePets();//change this to new func
+}
 
 replay()
