@@ -28,6 +28,12 @@ Controller.prototype.displayPatience = function () {
     this.patienceElem.innerText = (kitty.patience.toFixed(2));
 }
 
+Controller.prototype.displayUsedItem = function (itemElemId) {
+    var pressedButton = document.getElementById(itemElemId);
+    pressedButton.style.display = "none";
+    this.activeItems.innerHTML += availableItems[itemElemId].panelHTML;
+}
+
 Controller.prototype.displayEndgame = function () {
     var no = new Audio("media/no.wav");
     no.play();
