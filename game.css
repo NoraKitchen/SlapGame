@@ -8,28 +8,57 @@
 }
 
 .pet-block {
-    height: 75px;
+    height: 120px;
 }
 
 #pet-buttons {
     display: none;
+    margin: 10px;
 }
 
 .pet-button {
     display: inline-block;
-    margin: 5px;
-    border: 1px solid gray;
-    padding: 10px;
+    margin: 10px;
+    height: 100px;
+    width: 120px;
+    border: 2px solid gray;
+    padding: 40 10 0 10;;
     text-align: center;
     border-radius: 10%;
     font-weight: bold;
-    background-color: white;
-    opacity: .5;
+    opacity: .3;
+    font-size: 17px !important;
+    font-family: 'Oswald', sans-serif;
+}
+
+.pet-button:hover, .hand:hover {
+    opacity: .9;
+}
+
+.hand {
+    background-image: url("media/hand.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 6px;
+    opacity: .3;
+    height: 130px;
+    width: 130px;
+}
+
+.mid-hand {
+    position: relative;
+    top: -10px;
+}
+
+.outer-hand {
+    position: relative;
+    top: 30px;
 }
 
 .item-button {
     margin: 5px;
-    border: 2px solid gray;
+    border: 2px solid black;
     display: block;
     width: 70px;
     padding: 20 10 20 10;
@@ -38,7 +67,6 @@
     font-weight: bold;
     background-color: black;
     color: lightgray !important;
-    opacity: .7;
 }
 
 .item-buttons {
@@ -73,6 +101,7 @@ a:hover {
 
 .item-img {
     border-radius: 50%;
+    border: 3px double darkgray;
 }
 
 ul {
@@ -87,4 +116,19 @@ ul {
     background-image: url("media/bed.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
+}
+
+.item-panel {
+    opacity: .6;
+    background-color: darkslategrey !important;
+    text-align: center;
+    color: white !important;
+    font-size: 12px;
+    border-radius: 50%
+}
+
+.border {
+    border: 1px solid lightslategray!important;
+    border-radius: 10%;
+    background-color: rgba(0,0,0,0.4);
 }

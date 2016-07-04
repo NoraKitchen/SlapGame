@@ -56,7 +56,7 @@ Controller.prototype.viewReset = function () {
     this.boxButton.style.display = "inline-block";
     this.mouseButton.style.display = "inline-block";
     this.catnipButton.style.display = "inline-block";
-    this.activeItems.innerHTML = "";
+    // this.activeItems.innerHTML = "";
 }
 
 var controller = new Controller();

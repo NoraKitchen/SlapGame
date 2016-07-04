@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="game.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
         crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -31,12 +32,29 @@
                     </div>
                     <div class="col-xs-6">
                         <section class="row">
-                            <div class="pet-block">
+                            <!--<div class="pet-block">
                                 <ul class="list-inline" id="pet-buttons">
-                                    <a href="#" class="pet-button" onclick="kitty.receivePets(1)">STROKE</a>
-                                    <a href="#" class="pet-button" onclick="kitty.receivePets(5)">CARESS TAIL</a>
-                                    <a href="#" class="pet-button" onclick="kitty.receivePets(10)">RUB BELLY</a>
+                                    <div class="hand">
+                                        <a href="#" class="pet-button" onclick="kitty.receivePets(1)">STROKE</a>
+                                    </div>
+                                    <div class="hand mid-hand">
+                                        <a href="#" class="pet-button" onclick="kitty.receivePets(5)">CARESS TAIL</a>
+                                    </div>
+                                    <div class="hand">
+                                        <a href="#" class="pet-button" onclick="kitty.receivePets(10)">RUB BELLY</a>
+                                    </div>
                                 </ul>
+                            </div>-->
+                            <div class="pet-block" id="pet-buttons">
+                                <div class="hand outer-hand">
+                                    <a href="#" class="pet-button" onclick="kitty.receivePets(1)">STROKE</a>
+                                </div>
+                                <div class="hand mid-hand">
+                                    <a href="#" class="pet-button" onclick="kitty.receivePets(5)">CARESS TAIL</a>
+                                </div>
+                                <div class="hand outer-hand">
+                                    <a href="#" class="pet-button" onclick="kitty.receivePets(10)">RUB BELLY</a>
+                                </div>
                             </div>
                         </section>
                         <section class="row" id="cat-img-div">
@@ -50,6 +68,11 @@
                         </section>
                         <section class="row">
                             <div class="col-xs-12" id="active-items">
+                                <div class="col-xs-4 panel-default border">
+                                    <div class="panel-heading item-panel">CATNIP</div>
+                                    <div class="panel-body"><img class="item-img img-responsive" src="media/catnip.jpg"></div>
+                                    <div class="panel-footer item-panel">Sweet, sweet kitty drugs.</div>
+                                </div>
                             </div>
                             <div id="replay-button">
                                 <button class="btn" onclick="replay()">Try Again?</button>
