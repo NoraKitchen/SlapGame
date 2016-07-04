@@ -48,7 +48,7 @@ Controller.prototype.displayEndgame = function () {
 
 Controller.prototype.viewReset = function () {
     //reset pics and buttons in view to display new game
-    this.catImgElem.innerHTML = '<img class="img-responsive cat-img" src="media/cat.jpg">';
+    this.catImgElem.innerHTML = '<img class="img-responsive cat-img" src="media/testcat4.png">';
     this.gamePanel.classList.remove("panel-danger");
     this.petButtons.style.display = "block";
     this.replayButton.style.display = "none";

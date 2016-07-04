@@ -4,7 +4,53 @@
     flex-shrink:0;
     min-width:85%;
     min-height:85%;
+    margin-bottom: -20;
+}
+
+.pet-button {
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: center;
     border-radius: 10%;
+    font-weight: bold;
+    background-color: white;
+    opacity: .5;
+}
+
+.item-button {
+    margin: 5px;
+    border: 1px solid gray;
+    display: block;
+    width: 70px;
+    padding: 20 10 20 10;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    background-color: tan;
+    opacity: .5;
+}
+
+.item-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: black !important;
+    text-decoration: none !important;
 }
 
 #replay-button {
@@ -30,4 +76,9 @@ ul {
 
 .info-button {
   padding-left: 20px;
+}
+
+.test {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5e/Pick_The_Right_Edmonton_Pillow.jpg");
+    background-size: 100%;
 }
