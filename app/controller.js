@@ -37,7 +37,7 @@ Controller.prototype.displayUsedItem = function (itemElemId) {
 Controller.prototype.displayEndgame = function () {
     var no = new Audio("media/no.wav");
     no.play();
-    this.catImgElem.innerHTML = '<img class="img-responsive cat-img" src="media/angrycat.jpg">'
+    this.catImgElem.innerHTML = '<img class="img-responsive cat-img" src="media/angrycat.png">'
     this.gamePanel.classList.add("panel-danger");
     this.petButtons.style.display = "none";
     this.allItemsElem.style.display = "none";
@@ -48,7 +48,7 @@ Controller.prototype.displayEndgame = function () {
 
 Controller.prototype.viewReset = function () {
     //reset pics and buttons in view to display new game
-    this.catImgElem.innerHTML = '<img class="img-responsive cat-img" src="media/testcat4.png">';
+    this.catImgElem.innerHTML = '<img class="img-responsive cat-img" src="media/cat.png">';
     this.gamePanel.classList.remove("panel-danger");
     this.petButtons.style.display = "block";
     this.replayButton.style.display = "none";

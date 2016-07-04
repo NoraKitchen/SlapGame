@@ -18,31 +18,34 @@
                         <li><b>Patience:</b> <span id="patience"></span></li>
                         <li><b>Pets:</b> <span id="pets"></span></li>
                     </ul>
-                    <h4 class="right">CAT GAME <a href="https://github.com/NoraKitchen/SlapGame"><span class="info-button glyphicon glyphicon-info-sign"></span></a></h4>
+                    <h4 class="pull-right">CAT GAME <a href="https://github.com/NoraKitchen/SlapGame"><span class="info-button glyphicon glyphicon-info-sign"></span></a></h4>
                 </div>
                 <!--panel heading end-->
-                <div class="panel-body test">
-                    <div class="col-xs-1 item-buttons" id="item-buttons">
-                        <a href="#" id="box" onclick='kitty.useItem("box")' class="item-button">BOX</a>
-                        <a href="#" id="liveMouse" onclick='kitty.useItem("liveMouse")' class="item-button">MOUSE</a>
-                        <a href="#" id="catnip" onclick='kitty.useItem("catnip")' class="item-button">CATNIP</a>
+                <div class="panel-body background">
+                    <div class="col-xs-1">
+                        <div class="item-buttons" id="item-buttons">
+                            <a href="#" id="box" onclick='kitty.useItem("box")' class="item-button">BOX</a>
+                            <a href="#" id="liveMouse" onclick='kitty.useItem("liveMouse")' class="item-button">MOUSE</a>
+                            <a href="#" id="catnip" onclick='kitty.useItem("catnip")' class="item-button">CATNIP</a>
+                        </div>
                     </div>
                     <div class="col-xs-6">
                         <section class="row">
-                            <ul class="list-inline" id="pet-buttons">
-                                <a href="#" class="pet-button" onclick="kitty.receivePets(1)">STROKE</a>
-                                <a href="#" class="pet-button" onclick="kitty.receivePets(5)">CARESS TAIL</a>
-                                <a href="#" class="pet-button" onclick="kitty.receivePets(10)">RUB BELLY</a>
-                            </ul>
+                            <div class="pet-block">
+                                <ul class="list-inline" id="pet-buttons">
+                                    <a href="#" class="pet-button" onclick="kitty.receivePets(1)">STROKE</a>
+                                    <a href="#" class="pet-button" onclick="kitty.receivePets(5)">CARESS TAIL</a>
+                                    <a href="#" class="pet-button" onclick="kitty.receivePets(10)">RUB BELLY</a>
+                                </ul>
+                            </div>
                         </section>
                         <section class="row" id="cat-img-div">
-                            <img class="img-responsive cat-img" src="media/testcat4.png">
                         </section>
                     </div>
                     <div class="col-xs-5">
                         <section class="row">
                             <div class="col-xs-12">
-                                <h4 class="right">Items In Use</h4>
+                                <h4 class="pull-right">Items In Use</h4>
                             </div>
                         </section>
                         <section class="row">

@@ -7,6 +7,14 @@
     margin-bottom: -20;
 }
 
+.pet-block {
+    height: 75px;
+}
+
+#pet-buttons {
+    display: none;
+}
+
 .pet-button {
     display: inline-block;
     margin: 5px;
@@ -21,15 +29,16 @@
 
 .item-button {
     margin: 5px;
-    border: 1px solid gray;
+    border: 2px solid gray;
     display: block;
     width: 70px;
     padding: 20 10 20 10;
     text-align: center;
     border-radius: 50%;
     font-weight: bold;
-    background-color: tan;
-    opacity: .5;
+    background-color: black;
+    color: lightgray !important;
+    opacity: .7;
 }
 
 .item-buttons {
@@ -38,6 +47,7 @@
     align-items: flex-end;
     justify-content: space-around;
     margin-top: 50px;
+    display: none;
 }
 
 a:link {
@@ -69,16 +79,12 @@ ul {
     display: inline-block;
 }
 
-.right {
-    display: inline-block;
-    float: right;
-}
-
 .info-button {
   padding-left: 20px;
 }
 
-.test {
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5e/Pick_The_Right_Edmonton_Pillow.jpg");
+.background {
+    background-image: url("media/bed.jpg");
     background-size: 100%;
+    background-repeat: no-repeat;
 }

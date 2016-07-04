@@ -8,7 +8,8 @@ function replay() {
 
 replay()
 
-//re-edint endgame pic, make sure buttonsn don't throw off
 //edit appearance of items
+//edit appearance of endgame
+//add animations?
 //give some sort of item header
 //some kind of feedback as progress, animations?
