@@ -31,15 +31,23 @@ Controller.prototype.displayPatience = function () {
 }
 
 Controller.prototype.displayUsedItem = function (itemElemId) {
+    //remove clicked button/item
     var pressedButton = document.getElementById(itemElemId);
     pressedButton.style.display = "none";
+    //stop animation for already present cards
+    var inUseCards = this.activeItems.childNodes;
+    for (var i = 0; i < inUseCards.length; i++){
+        var currentCard = inUseCards[i];
+        currentCard.classList.remove("animated");
+    }
+    //add item to items in use
     this.activeItems.innerHTML += availableItems[itemElemId].panelHTML;
 }
 
 Controller.prototype.displayEndgame = function () {
     var no = new Audio("media/no.wav");
     no.play();
-    this.catImgElem.innerHTML = '<img class="img-responsive cat-img" src="media/angrycat.png">'
+    this.catImgElem.innerHTML = '<img class="img-responsive cat-img animated wobble" src="media/angrycat.png">'
     this.gamePanel.classList.add("panel-danger");
     this.petButtons.style.display = "none";
     this.itemButtonsElem.style.display = "none";

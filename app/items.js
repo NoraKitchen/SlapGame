@@ -1,11 +1,9 @@
 var Item = function (name, modifier, imagePath, description) {
-    // this.elemId = elemId;
     this.name = name;
     this.modifier = modifier;
     this.imagePath = imagePath;
     this.description = description;
-    // this.panelHTML =  '<div class="col-xs-4 panel-default border"><div class="panel-heading item-panel">'+ name + '</div><div class="panel-body"><img class="item-img img-responsive" src="' + imagePath + '"></div><div class="panel-footer item-panel">' + description + '</div></div>';
-    this.panelHTML =  '<div class="col-xs-4"><div class="panel-default border"><div class="panel-heading item-panel">'+ name + '</div><div class="panel-body"><img class="item-img img-responsive" src="' + imagePath + '"></div><div class="panel-footer item-panel">' + description + '</div></div></div>';
+    this.panelHTML =  '<div class="col-xs-4 animated flipInY"><div class="panel-default border"><div class="panel-heading item-panel">'+ name + '</div><div class="panel-body"><img class="item-img img-responsive" src="' + imagePath + '"></div><div class="panel-footer item-panel">' + description + '</div></div></div>';
 
 };
 
