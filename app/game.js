@@ -7,8 +7,3 @@ function replay() {
 }
 
 replay()
-
-//edit appearance of endgame
-//add animations?
-//give some sort of item header
-//some kind of feedback as progress, animations?

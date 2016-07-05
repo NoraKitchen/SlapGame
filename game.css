@@ -1,7 +1,4 @@
 /*Only use this file if you want to override bootstrap or create your own style*/
-img {
-        filter: invert(100%)
-}
 
 #endgame, .header, .pet-button, .item-button {
     font-family: 'Oswald', sans-serif;
@@ -13,6 +10,17 @@ img {
     font-size: 25px;
     text-align: center;
     display: none;
+}
+
+#patience-bar {
+    height: 400px;
+    background-color: rgba(138, 7, 7 ,0.5);
+    overflow: hidden;
+    text-align: center;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: "Sigmar One";
 }
 
 
@@ -158,6 +166,7 @@ ul {
     background-size: 100%;
     background-repeat: no-repeat;
     padding-bottom: 0px !important;
+    padding-top: 0px !important;
 }
 
 .item-panel {

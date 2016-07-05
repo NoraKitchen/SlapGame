@@ -2,6 +2,7 @@ function Controller() {
     this.nameElem = document.getElementById("name");
     this.petsElem = document.getElementById("pets");
     this.patienceElem = document.getElementById("patience");
+    this.patienceBarElem = document.getElementById("patience-bar");
 
     this.catImgElem = document.getElementById("cat-img-div");
     this.gamePanel = document.getElementById("player-panel")
@@ -26,6 +27,7 @@ Controller.prototype.displayPets = function () {
 
 Controller.prototype.displayPatience = function () {
     this.patienceElem.innerText = (kitty.patience.toFixed(2));
+    this.patienceBarElem.style.height = kitty.patience * 4 + "px";
 }
 
 Controller.prototype.displayUsedItem = function (itemElemId) {
