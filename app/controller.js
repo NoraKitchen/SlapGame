@@ -8,6 +8,7 @@ function Controller() {
     this.gamePanel = document.getElementById("player-panel")
     this.petButtons = document.getElementById("pet-buttons");
     this.endgamePanel = document.getElementById("endgame");
+    this.catNameSpan = document.getElementById("cat-name");
 
     this.itemButtonsElem = document.getElementById("item-buttons")
     this.boxButton = document.getElementById("box");
@@ -15,6 +16,10 @@ function Controller() {
     this.catnipButton = document.getElementById("catnip");
 
     this.activeItems = document.getElementById("active-items");
+}
+
+Controller.prototype.displayFAQ = function () {
+    alert("CatGame FAQ \n\n Question: Is there a way to win CatGame? \n\n Answer: No. \n\n Thanks for playing.");
 }
 
 Controller.prototype.displayName = function () {
@@ -51,6 +56,7 @@ Controller.prototype.displayEndgame = function () {
     this.gamePanel.classList.add("panel-danger");
     this.petButtons.style.display = "none";
     this.itemButtonsElem.style.display = "none";
+    this.catNameSpan.innerText = kitty.name;
     this.endgamePanel.style.display = "block";
     this.activeItems.style.display = "none";
 }
