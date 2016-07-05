@@ -1,3 +1,5 @@
+#EDIT: This readme applies to the previous version of CatGame. New readme coming soon. 7/4/2016
+
 #CatGame
 
 This app was created during week two of the BoiseCodeWorks Immersive Full Stack program. At this point in the curriculum, students had experience with HTML, CSS, Bootstrap, and basic Javascript.
