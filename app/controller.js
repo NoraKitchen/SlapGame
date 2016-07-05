@@ -6,7 +6,7 @@ function Controller() {
     this.catImgElem = document.getElementById("cat-img-div");
     this.gamePanel = document.getElementById("player-panel")
     this.petButtons = document.getElementById("pet-buttons");
-    this.replayButton = document.getElementById("replay-button");
+    this.endgamePanel = document.getElementById("endgame");
 
     this.itemButtonsElem = document.getElementById("item-buttons")
     this.boxButton = document.getElementById("box");
@@ -41,9 +41,8 @@ Controller.prototype.displayEndgame = function () {
     this.gamePanel.classList.add("panel-danger");
     this.petButtons.style.display = "none";
     this.itemButtonsElem.style.display = "none";
-    this.replayButton.style.display = "block";
-    this.activeItems.innerHTML = "<h3>Oh no!</h1> " + kitty.name + " is fed up with your measly attempts at affection. <h1><b>NOW, SUFFER THE CONCEQUENCES.</b></h1>"
-
+    this.endgamePanel.style.display = "block";
+    this.activeItems.style.display = "none";
 }
 
 Controller.prototype.viewReset = function () {
@@ -51,7 +50,7 @@ Controller.prototype.viewReset = function () {
     this.catImgElem.innerHTML = '<img class="img-responsive cat-img" src="media/cat.png">';
     this.gamePanel.classList.remove("panel-danger");
     this.petButtons.style.display = "block";
-    this.replayButton.style.display = "none";
+    this.endgamePanel.style.display = "none";
     this.itemButtonsElem.style.display = "flex";
     this.boxButton.style.display = "inline-block";
     this.mouseButton.style.display = "inline-block";

@@ -8,7 +8,6 @@ function replay() {
 
 replay()
 
-//edit appearance of items
 //edit appearance of endgame
 //add animations?
 //give some sort of item header

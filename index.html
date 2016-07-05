@@ -14,7 +14,7 @@
         <section class="row">
             <div class="col-xs-12">
                 <div class="panel panel-default" id="player-panel">
-                    <div class="panel-heading">
+                    <div class="panel-heading header">
                         <ul class="list-inline">
                             <li><b>Name:</b> <span id="name"></span></li>
                             <li><b>Patience:</b> <span id="patience"></span></li>
@@ -45,16 +45,14 @@
                             </section>
                         </div>
                         <div class="col-xs-6">
-                            <section class="row">
-                                <div class="col-xs-12">
-                                    <h4 class="pull-right">Items In Use</h4>
-                                </div>
-                            </section>
                             <section class="row active-items-row">
                                 <div class="col-xs-12" id="active-items">
                                 </div>
-                                <div id="replay-button">
-                                    <button class="btn" onclick="replay()">Try Again?</button>
+                                <div class="well" id="endgame">
+                                    <h1>Oh no!</h1> <span>Snuggles McSnuggleface</span> is fed up with your measly attempts at
+                                    affection.
+                                    <h1><b>NOW, SUFFER THE CONCEQUENCES.</b></h1>
+                                    <button class="btn btn-danger" onclick="replay()">Try Again?</button>
                                 </div>
                             </section>
                             <section class="row">

@@ -1,4 +1,20 @@
 /*Only use this file if you want to override bootstrap or create your own style*/
+img {
+        filter: invert(100%)
+}
+
+#endgame, .header, .pet-button, .item-button {
+    font-family: 'Oswald', sans-serif;
+}
+
+#endgame {
+    background-color: rgba(138, 7, 7 ,0.5);
+    color: black;
+    font-size: 25px;
+    text-align: center;
+    display: none;
+}
+
 
 .cat-img {
     flex-shrink:0;
@@ -27,7 +43,6 @@
     font-weight: bold;
     opacity: .3;
     font-size: 17px !important;
-    font-family: 'Oswald', sans-serif;
 }
 
 .pet-button:hover, .img-button:hover {
@@ -75,7 +90,6 @@
     border-radius: 10%;
     font-weight: bold;
     color: gray !important;
-    font-family: 'Oswald', sans-serif;;
     background-color: rgba(0,0,0,0.4);
     position: relative;
     top: 15px;
@@ -83,7 +97,7 @@
 }
 
 .active-items-row {
-    height: 275px;
+    height: 315px;
     padding-top: 10px;
 }
 
