@@ -1,8 +1,8 @@
-#EDIT: This readme applies to the previous version of CatGame. New readme coming soon. 7/4/2016
-
 #CatGame
 
 This app was created during week two of the BoiseCodeWorks Immersive Full Stack program. At this point in the curriculum, students had experience with HTML, CSS, Bootstrap, and basic Javascript.
+
+NOTE: This app was heavily refactored at the end of the 3 month program. To see code for the original CatGame, see branch CatGameV1.
 
 The app was originally assigned as a “slap game” in which the user would slap, kick, and punch a stick figure till its health was reduced to zero. I figured I could take a slightly different route so long as I included the same basic functionality.
 
@@ -16,27 +16,44 @@ In this app, my job was to...
 4. Create “items” with a constructor, and let them be used by the player to decrease damage
 5. BONUS: Draw the array of items to the page in some way, and allow the player to select items to use
 
-##Process highlights, and what I'd do differently
+##Issues with the original
 
-I'm a little surprised I was able to accomplish so much after only (I believe at the time) a couple days of first making JavaScript and HTML interact. Still, my experience with JavaScript before this was solely in completing short, self-contained exercises, and I definitely think it shows.
+My experience with JavaScript before creating CatGame was solely in completing short, self-contained exercises or functions, and it definitely showed. When I originally completed the activity, I fulfilled all the requirements, but the structure of the code (as well as the look of the thing) was pretty quirky. Some of the problems were...
 
-While my CatGame does everything asked for plus a little more on the surface, the structure of the code under the hood is a little quirky and could do with some heavy refactoring.
+A lot of global variables and functions, needed to be more object-oriented
+Some functions with way too much to do, single responsibility principal would roll in grave
+Logic hopelessly mixed with changes to the view,  code hard to follow
+Clearly had other things on my mind than visuals
 
-###Half-done refactors of days since passed
+I decided at the end of class to come back to my CatGame and see what kind of improvements I could make.
 
-I did actually do some refactoring even as I was originally writing the code. Instructions for the activity implied a separate function could be written for ever single “attack” button, and I initially did this, but later noticed I could simply rewrite the function with a “damage” parameter and use the same function for all buttons, with different damage amounts passed in as arguments. It also seems I chose to put the “addMods” function as a method on the player object, which isn't a bad idea...
+###Object Time
 
-###The transcendental kitteh
+If the original code of CatGame is any indication, my use and understanding of objects at the beginning of BCW was laughably bad. I've created a game with a cat in it—a cat who clearly has properties such as 'patience' and 'name'--yet no cat object to speak of. All his properties and functions sit in the global space, and instead I have a 'player' object with hardly any real purpose whatsoever.
 
-...But that begs the question, why is the useItem function not also on the player object? Also, isn't it a little weird that this game clearly contains a cat, but there is no cat object to speak of? Instead, what perhaps ought to have been our cat's properties (his name, his patience level, possibly his pets taken) float freely and globally in random places about the code. The cat has no physical form, no bounds to his existence, no need for the limiting restrictions of JavaScript object encapsulation. The cat is no mere object in this game. He IS them game. He is us all.
+To rectify those problems, I got rid of my player object and made a Kitty object/constructor instead, moving all the appropriate properties and functions onto Kitty. I also fine-tuned my item-related constructor/objects and moved them into kitty.js and item.js files for better organization.
 
-So I think someone needs to refactor this code and put that cat back in line. Also, while they're at it, they might consider taking a look at the mildly horrific updatePatience function. Likely originally conceived to update the health in the HTML/view, the function has clearly gone over-achiever on us and decided to also take on not only the job of handling the entire endgame process when “patience” hits zero, but ALSO a number of activities that as far as I can tell have no reason to be performed at every single patience update and more likely belong to the replay/restart game function.
+One rough spot I did run into was in whether the “useItem” method (which allowed items such as catnip to be applied to the kitty and reduce the rate at which his patience decreased) should be placed on the Item or on the Kitty. The method would work roughly the same either way, merely requiring the other object instance that the method didn't belong to (either the Item or Kitty) be passed in as an argument.
 
-###That being said...
+In the end I decided to put the method on Kitty, since the item is not actually using itself and because various calculations were happening within Kitty when an item was used, so it seemed the more active party. Looking at it now, I also notice 'calcMods' (which is called within useItem) could easily have been made a private method on Kitty, in which case useItem would need to be on the Kitty object to even use it.
 
-One thing that did surprise me looking back over this was the function useItem, whose purpose was to add a used item to the player inventory and display the item panel in the view. This being vanilla JS, I expected the function to be jumbled up with a bunch of HTML (to display the item panel) written inside it. But all there was was a handful of short lines of code. How did the panel appear on the page when the function that added it had no actual HTML inside it to write to the page?
+###Breaking up Frankenfunction
 
-On further inspection, it turned out I had saved the entire string of HTML to write the panel inside a “panelHTML” property on each item object. There are a few things about this that do make me cringe a little (possibly unnecessary repetition of very similar code, and item descriptions are hard-coded in the HTML string rather than using the actual description property), so I'm not sure if it was the best choice overall. But I do still like what I think I was trying to do, which was keep my function free of ugly and confusing HTML strings. Maybe there could even have been a way to keep that basic tactic but remove some of the issues, if I had worked at it a little harder.
+Probably my best Frankenfunction was “updatePatience.” Sounds like it's meant to update the kitty's patience, doesn't it? But why only have it do that when we could also make it take care of the entire end game sequence as well? Also, let's have it do the resets to the images and text in the view needed when the player restarts the game *every single time the player pets the cat*, because....because we can.
+
+So I rewrote updatePatience. Now it's job is to—you're not going to believe this—update the patience. The end game process is handled in a method of its own, as are the resets to the view required on replay.
+
+###Controlling the view
+
+HTML mixed in with the game logic gives me the skin wriggles, especially after using Angular for the majority of the time at BCW. I decided to make another file/object that carried all the responsibility of updating the view. It separates the game workings from the UI, and I feel like this did wonders for the readability and potential future editing or manageability of the code. 
+
+One slightly odd thing/violation is the 'panelHTML' property for each of the items, stored on the Item objects themselves. This was a carry-over from the way the game was originally written. I think this was actually done as an attempt to do the very same thing I am doing now (keep the long string of HTML from mixing with the logic within the 'useItem' function).
+
+While and odd but noble attempt in its time, I probably should taken it out of the Item object and put into the view controller, perhaps into a buildPanel function that could create the panel HTML for any item that is passed in.
+
+###Some visual flare
+
+Working on visuals is always rough for me. I dream of the day when I'll simply be handed a PSD to clone rather than having design myself, because it is not my strong suit. I did use this opportunity to play with transparent images, opacity, and putting solid text or images on opaque-like things, since this was something I was fuzzy on (but curious about) before. In the future, I might work on making the game more mobile-friendly.
 
 ###To see the original instructions for this activity, visit README2.md and README3.md.
 
